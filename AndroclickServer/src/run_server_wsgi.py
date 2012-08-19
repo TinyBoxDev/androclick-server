@@ -4,5 +4,5 @@ from AndroclickCore.AndroclickProperties import AndroclickProperties;
 
 androclickServer = AndroclickCore();
 androclickProperties = AndroclickProperties();
-httpd = make_server('0.0.0.0', 5000, androclickServer);
+httpd = make_server('0.0.0.0', 50233, androclickServer);
 httpd.serve_forever();
