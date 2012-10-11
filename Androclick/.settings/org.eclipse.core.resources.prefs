@@ -1,0 +1,15 @@
+#Mon Jun 25 00:17:48 CEST 2012
+eclipse.preferences.version=1
+encoding//src/AndroclickCore/AndroclickController/AndroclickSkeleton.py=UTF-8
+encoding//src/AndroclickCore/AndroclickController/__init__.py=UTF-8
+encoding//src/AndroclickCore/AndroclickObjectFactory/AndroclickObject.py=UTF-8
+encoding//src/AndroclickCore/AndroclickObjectFactory/Bus.py=UTF-8
+encoding//src/AndroclickCore/AndroclickObjectFactory/Stop.py=UTF-8
+encoding//src/AndroclickCore/AndroclickObjectFactory/__init__.py=UTF-8
+encoding//src/AndroclickCore/AndroclickProperties.py=UTF-8
+encoding//src/AndroclickCore/__init__.py=UTF-8
+encoding//src/AnmApi/ANMPacket.py=UTF-8
+encoding//src/AnmApi/AnmObject.py=UTF-8
+encoding//src/AnmApi/__init__.py=UTF-8
+encoding//src/WebResources/__init__.py=UTF-8
+encoding//src/run_server.py=UTF-8
