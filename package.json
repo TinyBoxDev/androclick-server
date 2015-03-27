@@ -4,7 +4,8 @@
   "description": "The Androclick Backend",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "./node_modules/.bin/grunt test",
+    "develop": "./node_modules/.bin/grunt watch"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,17 @@
   "bugs": {
     "url": "https://github.com/TinyBoxDev/androclick-server/issues"
   },
-  "homepage": "https://github.com/TinyBoxDev/androclick-server"
+  "homepage": "https://github.com/TinyBoxDev/androclick-server",
+  "dependencies": {
+    "express": "^4.12.3"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.7",
+    "mocha": "^2.2.1"
+  }
 }
