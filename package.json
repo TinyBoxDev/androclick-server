@@ -1,0 +1,19 @@
+{
+  "name": "androclick-server",
+  "version": "0.0.0",
+  "description": "The Androclick Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TinyBoxDev/androclick-server"
+  },
+  "author": "TinyBoxDev <tinyboxdev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TinyBoxDev/androclick-server/issues"
+  },
+  "homepage": "https://github.com/TinyBoxDev/androclick-server"
+}
