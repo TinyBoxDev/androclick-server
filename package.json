@@ -2,8 +2,8 @@
   "name": "androclick-server",
   "version": "0.0.0",
   "description": "The Androclick Backend",
-  "main": "index.js",
   "scripts": {
+    "start": "node lib/index.js",
     "test": "./node_modules/.bin/grunt test",
     "develop": "./node_modules/.bin/grunt watch"
   },
