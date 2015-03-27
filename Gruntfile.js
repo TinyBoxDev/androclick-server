@@ -1,5 +1,4 @@
 /**
- *
  *  _____ _            ______            ______ 
  * |_   _(_)           | ___ \           |  _  \
  *   | |  _ _ __  _   _| |_/ / _____  __ | | | |_____   __
@@ -10,7 +9,6 @@
  *               |___/
  *
  * Gruntfile for Androclick Server
- *
  **/
 
 module.exports = function(grunt) {
