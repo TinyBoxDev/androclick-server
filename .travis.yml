@@ -5,4 +5,5 @@ deploy:
   provider: heroku
   api_key:
     secure: DrcbP/BMuSLSc62pn/Xm+Q0J0/Q34f4f6cp7bVKIgauGEJZknIAJnMm+8jiuv7o5oEdPcMp4mpJuV3DkbIEXQVrr/biRrAYQFsz+l4E1OwScZNsbCuiFtgYMlOsGrdmkkiDa2ZgcKpYpaINjz+dp0v9zaol2NpwicZqvr7TMS+0=
-  on: stage
+  app:
+    stage: androclick-stage
