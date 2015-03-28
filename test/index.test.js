@@ -4,7 +4,7 @@ var should = chai.should();
 
 describe('The index module', function(){
 
-  it('should pass', function(done) {
+  it('has no tests', function(done) {
     done();
   });
 
