@@ -9,8 +9,6 @@
  *               |___/
  **/
 
-/* jshint evil:true */
-
 var mocha = require('mocha');
 var chai = require('chai');
 var should = chai.should();
@@ -32,7 +30,7 @@ describe('The stops resource', function() {
 
   beforeEach(function(done) {
     uut = rewire('../../lib/resource/stop.js');
-    anm = eval('(' + ANM.toString() + ')'); // this is used to clone the ANM function
+    anm = ANM.clone();
     uut.__set__('ANM', anm);
 
     app = new ExpressApp();
@@ -58,8 +56,8 @@ describe('The stops resource', function() {
       done();
     };
 
-    should.exist(app.postCallbacks['/stops/:number']);
-    app.postCallbacks['/stops/:number'](req, res);
+    should.exist(app.getCallbacks['/stops/:number']);
+    app.getCallbacks['/stops/:number'](req, res);
   });
 
 });

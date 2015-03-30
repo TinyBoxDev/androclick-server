@@ -9,8 +9,6 @@
  *               |___/
  **/
 
-/* jshint evil:true */
-
 var mocha = require('mocha');
 var chai = require('chai');
 var should = chai.should();
@@ -18,24 +16,60 @@ var should = chai.should();
 var rewire = require('rewire');
 
 var HTTP = require('../mocks.js').HTTP;
+var ClientRequest = require('../mocks.js').ClientRequest;
+var ClientResponse = require('../mocks.js').ClientResponse;
+var ForecastMessage = require('../mocks.js').ForecastMessage;
 var ForecastData = require('../data.js').Forecast;
 
 describe('The ANM service', function() {
 
   var uut;
   var http;
+  var forecastMessage;
+  var request;
+  var response;
 
   beforeEach(function(done) {
-    uut = rewire('../../lib/service/anm.js');
-    http = eval('(' + HTTP.toString() + ')'); // this is used to clone the HTTP function
-    uut.__set__('http', http);
+    var ANM = rewire('../../lib/service/anm.js');
+    http = HTTP.clone();
+    forecastMessage = new ForecastMessage();
+    ANM.__set__('http', http);
+    ANM.__set__('ForecastMessage', forecastMessage);
+    uut = new ANM();
+
+    request = new ClientRequest();
+    response = new ClientResponse();
 
     done();
   });
 
   it('should get forecasts by stop', function(done) {
-    console.log(ForecastData);
-    done();
+    response.on = function(event, callback) {
+      if(event === 'data')
+        callback(ForecastData);
+      if(event === 'end')
+        callback();
+    };
+
+    forecastMessage.parse = function(xml, callback) {
+      xml.should.be.equal(ForecastData);
+      callback(forecastMessage);
+    };
+
+    http.request = function(options, callback) {
+      options.host.should.be.equal('m.anm.it');
+      options.path.should.be.equal('/srv/ServiceInfoAnmLinee.asmx/CaricaPrevisioni?Palina=9999');
+      options.method.should.be.equal('GET');
+      request.setCallback(callback, response);
+      return request;
+    };
+
+    var onData = function(data) {
+      data.should.be.equal(forecastMessage);
+      done();
+    };
+
+    uut.getForecasts(9999, onData);
   });
 
 });
