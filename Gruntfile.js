@@ -19,6 +19,9 @@ module.exports = function(grunt) {
     allFiles: [ '<%= srcFiles %>', '<%= testFiles %>', 'Gruntfile.js' ],
 
     jshint: {
+      options: {
+        node: true,
+      },
       files: ['<%= allFiles %>']
     },
 
