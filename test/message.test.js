@@ -21,6 +21,7 @@ describe('The message module', function() {
 
     var ForecastMessage = rewire('../lib/message.js').ForecastMessage;
     var data = require('./data.js').Forecast;
+    var invalidData = require('./data.js').InvalidForecast;
 
     it('should parse the xml message', function(done) {
       var onParsed = function(object) {
@@ -34,6 +35,16 @@ describe('The message module', function() {
       };
 
       ForecastMessage.parse(data, onParsed);
+    });
+
+    it('should return the error code 0 on error on parsing', function(done) {
+      var onDone = function(object, error) {
+        error.code.should.be.equal(0);
+        error.message.should.be.equal('Invalid stop number');
+        done();
+      };
+
+      ForecastMessage.parse(invalidData, onDone);
     });
 
   });

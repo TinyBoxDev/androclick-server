@@ -60,4 +60,29 @@ describe('The stops resource', function() {
     app.getCallbacks['/stops/:number'](req, res);
   });
 
+  it('should reply with 400 on error of the forecast', function(done) {
+    var stubData = {};
+
+    anm.prototype.getForecasts = function(number, onData, onError) {
+      number.should.be.equal(9999);
+      onError(stubData);
+    };
+
+    req.params.number = 9999;
+
+    var called = false;
+    res.status = function(code) {
+      code.should.be.equal(400);
+      called = true;
+      return res;
+    };
+    res.json = function(data) {
+      called.should.be.equal(true);
+      data.should.be.equal(stubData);
+      done();
+    };
+
+    app.getCallbacks['/stops/:number'](req, res);
+  });
+
 });

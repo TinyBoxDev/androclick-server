@@ -40,10 +40,6 @@ describe('The ANM service', function() {
     request = new ClientRequest();
     response = new ClientResponse();
 
-    done();
-  });
-
-  it('should get forecasts by stop', function(done) {
     response.on = function(event, callback) {
       if(event === 'data')
         callback(ForecastData);
@@ -51,6 +47,10 @@ describe('The ANM service', function() {
         callback();
     };
 
+    done();
+  });
+
+  it('should get forecasts by stop', function(done) {
     forecastMessage.parse = function(xml, callback) {
       xml.should.be.equal(ForecastData);
       callback(forecastMessage);
@@ -72,4 +72,23 @@ describe('The ANM service', function() {
     uut.getForecasts(9999, onData);
   });
 
+  it('should fire error callback when an invalid stop is queried', function(done) {
+    var testError = new Error();
+
+    forecastMessage.parse = function(xml, callback) {
+      callback(null, testError);
+    };
+
+    http.request = function(options, callback) {
+      request.setCallback(callback, response);
+      return request;
+    };
+
+    var onError = function(error) {
+      error.should.be.equal(testError);
+      done();
+    };
+
+    uut.getForecasts(9999, null, onError);
+  });
 });
